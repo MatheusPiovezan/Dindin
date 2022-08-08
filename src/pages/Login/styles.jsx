@@ -37,11 +37,10 @@ background-size: cover;
         color: #FFFFFF;
     }
 
-    button {
+    .link {
         all: unset;
 
-        width: 284px;
-        height: 48px;
+        padding: 11px 80px;
 
         font-style: normal;
         font-weight: 700;
