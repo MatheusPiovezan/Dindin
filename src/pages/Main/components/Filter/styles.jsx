@@ -2,8 +2,10 @@ import styled from "styled-components";
 
 export const Container = styled.div`
 
+width: 100%;
+
 font-family: 'Rubik', sans-serif;
-    
+
     button {
         all: unset;
 
@@ -33,6 +35,15 @@ font-family: 'Rubik', sans-serif;
         background-color: #FAFAFA;
         box-shadow: 0px 2px 11px rgba(0, 0, 0, 0.1);
         border-radius: 10px;
+
+        .div-strong {
+            font-style: normal;
+            font-weight: 500;
+            font-size: 12px;
+            line-height: 14px;
+
+            color: #B9B9B9;
+        }
     }
 
     .buttons {

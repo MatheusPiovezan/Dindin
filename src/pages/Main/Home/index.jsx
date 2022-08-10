@@ -1,5 +1,6 @@
 import * as H from './styles';
 import Filter from '../components/Filter';
+import Resume from '../components/Resume';
 import Logo from '../../../assets/Logo.svg';
 import IconAvatar from '../../../assets/IconAvatar.svg';
 import IconExit from '../../../assets/IconExit.svg';
@@ -18,7 +19,10 @@ function Home() {
         </div>
       </div>
       <div className='home'>
-        <Filter />
+        <div className='div-row'>
+          <Filter />
+          <Resume />
+        </div>
       </div>
     </H.Container>
   );

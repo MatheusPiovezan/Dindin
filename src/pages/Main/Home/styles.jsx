@@ -35,5 +35,11 @@ background: linear-gradient(90.23deg, #05EDE3 0.02%, #645FFB 99.63%);
 
         border-radius: 60px 60px 0px 0px;
         background-color: #ffffff;
+
+        .div-row {
+            display: flex;
+
+            gap: 40px;
+        }
     }
 `
