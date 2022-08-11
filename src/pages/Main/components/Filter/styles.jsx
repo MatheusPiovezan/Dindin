@@ -30,6 +30,7 @@ font-family: 'Rubik', sans-serif;
     }
 
     .filters {
+        margin: 0 0 60px 0;
         padding: 32px 0 13px 32px;
 
         background-color: #FAFAFA;

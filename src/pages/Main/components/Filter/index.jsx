@@ -1,6 +1,7 @@
 import * as F from './styles';
 import { useState } from 'react';
 import IconFilter from '../../../../assets/IconFilter.svg';
+import Table from '../Table';
 
 function Filter() {
 
@@ -23,6 +24,7 @@ function Filter() {
                     </div>
                 </div>
             }
+            <Table />
         </F.Container>
     );
 }
