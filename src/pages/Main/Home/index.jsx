@@ -4,6 +4,7 @@ import Resume from '../components/Resume';
 import Logo from '../../../assets/Logo.svg';
 import IconAvatar from '../../../assets/IconAvatar.svg';
 import IconExit from '../../../assets/IconExit.svg';
+import EditUser from '../../../components/EditUser';
 
 function Home() {
   return (
@@ -24,6 +25,7 @@ function Home() {
           <Resume />
         </div>
       </div>
+      <EditUser />
     </H.Container>
   );
 }
