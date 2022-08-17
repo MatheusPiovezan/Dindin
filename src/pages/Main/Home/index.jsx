@@ -1,10 +1,11 @@
 import * as H from './styles';
 import Filter from '../components/Filter';
 import Resume from '../components/Resume';
+import EditUser from '../../../components/EditUser';
+import AddRegister from '../components/AddRegister';
 import Logo from '../../../assets/Logo.svg';
 import IconAvatar from '../../../assets/IconAvatar.svg';
 import IconExit from '../../../assets/IconExit.svg';
-import EditUser from '../../../components/EditUser';
 
 function Home() {
   return (
