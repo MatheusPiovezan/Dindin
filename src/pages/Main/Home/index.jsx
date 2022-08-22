@@ -6,8 +6,11 @@ import AddRegister from '../components/AddRegister';
 import Logo from '../../../assets/Logo.svg';
 import IconAvatar from '../../../assets/IconAvatar.svg';
 import IconExit from '../../../assets/IconExit.svg';
+import useUser from '../../../hooks/useUser';
 
 function Home() {
+  const { openModalAdd } = useUser();
+  
   return (
     <H.Container>
       <div className='logo-user'>
@@ -27,6 +30,7 @@ function Home() {
         </div>
       </div>
       <EditUser />
+      {openModalAdd && <AddRegister />}
     </H.Container>
   );
 }

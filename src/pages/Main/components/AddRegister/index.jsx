@@ -1,10 +1,11 @@
 import * as A from './styles';
 import IconClose from '../../../../assets/IconClose.svg';
 import { useEffect, useRef, useState } from 'react';
+import useUser from '../../../../hooks/useUser';
 
 function AddRegister() {
 
-    const [openModal, setOpenModal] = useState(false);
+    const { setOpenModalAdd } = useUser();
     const [btnClicked, setBtnClicked] = useState('saida');
     const btnEntryRef = useRef();
     const btnExitRef = useRef();
@@ -25,7 +26,7 @@ function AddRegister() {
                 <div>
                     <div className='title-close'>
                         <h1>Adicionar Registro</h1>
-                        <img src={IconClose} onClick={() => setOpenModal(false)} />
+                        <img src={IconClose} onClick={() => setOpenModalAdd(false)} />
                     </div>
                     <div className='btn-entry-exit'>
                         <button ref={btnEntryRef} onClick={() => setBtnClicked('entrada')}>Entrada</button>

@@ -1,6 +1,9 @@
 import * as R from './styles';
+import useUser from '../../../../hooks/useUser';
 
 function Resume() {
+    const { setOpenModalAdd } = useUser();
+
     return (
         <R.Container>
             <div className='container'>
@@ -21,7 +24,7 @@ function Resume() {
                     <span>R$ 129,50</span>
                 </div>
             </div>
-            <button>Adicionar Registro</button>
+            <button onClick={() => setOpenModalAdd(true)}>Adicionar Registro</button>
         </R.Container>
     );
 }
