@@ -67,26 +67,27 @@ background-size: cover;
             border: 1px solid #555555;
             border-radius: 5px;
         }
-    }
 
-    button {
-        all: unset;
+        button {
+            all: unset;
 
-        height: 50px;
-        width: 100%;
+            height: 50px;
+            width: 100%;
 
-        margin: 38px 0 12px 0;
+            margin: 38px 0 12px 0;
 
-        font-style: normal;
-        font-weight: 700;
-        font-size: 14px;
-        line-height: 17px;
-        text-align: center;
+            font-style: normal;
+            font-weight: 700;
+            font-size: 14px;
+            line-height: 17px;
+            text-align: center;
 
-        background-color: #7978D9;
-        color: #ffffff;
-        border-radius: 5px;
-        cursor: pointer;
+            background-color: #7978D9;
+            color: #ffffff;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
     }
 
     .link {
