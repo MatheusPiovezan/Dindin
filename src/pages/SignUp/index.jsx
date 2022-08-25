@@ -2,6 +2,7 @@ import * as S from './styles';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import api from '../../services/api';
+import schemaSignup from '../../schemas/schemaSignup';
 import Logo from '../../assets/Logo.svg';
 
 function SignUp() {
@@ -12,6 +13,8 @@ function SignUp() {
 
     async function handleSubmit(e) {
         e.preventDefault();
+
+        await schemaSignup.validate({nome, email, senha, confirmacaoSenha});
 
         try {
             const response = await api.post('/usuario', {
@@ -38,7 +41,7 @@ function SignUp() {
                         <label>Nome</label>
                         <input type='text' value={nome} onChange={(e) => setNome(e.target.value)} />
                         <label>E-mail</label>
-                        <input type='email' value={email} onChange={(e) => setEmail(e.target.value)} />
+                        <input type='text' value={email} onChange={(e) => setEmail(e.target.value)} />
                         <label>Senha</label>
                         <input type='password' value={senha} onChange={(e) => setSenha(e.target.value)} />
                         <label>Confirmação de Senha</label>
