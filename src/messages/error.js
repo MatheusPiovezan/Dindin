@@ -4,6 +4,7 @@ const message = {
     invalidFormatEmail: `O e-mail está com formato invalido`,
     passwordDontExists: `A senha é essencial para segurança da sua conta`,
     confirmPasswordDontExists: `É preciso confirmar sua senha para a segurança da sua conta`,
+    loginWrong: `E-mail ou senha invalidos`,
 }
 
 export default message;

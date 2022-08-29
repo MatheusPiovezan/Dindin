@@ -64,6 +64,8 @@ background-size: cover;
             width: 400px;
             height: 50px;
 
+            padding: 0 10px 0 10px;
+
             border: 1px solid #555555;
             border-radius: 5px;
         }

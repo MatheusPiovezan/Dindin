@@ -1,8 +1,10 @@
 import * as S from './styles';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import api from '../../services/api';
 import schemaSignup from '../../schemas/schemaSignup';
+import success from '../../messages/success';
 import Logo from '../../assets/Logo.svg';
 
 function SignUp() {
@@ -10,22 +12,24 @@ function SignUp() {
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
     const [confirmacaoSenha, setConfirmacaoSenha] = useState('');
+    const navigate = useNavigate();
 
     async function handleSubmit(e) {
         e.preventDefault();
 
-        await schemaSignup.validate({nome, email, senha, confirmacaoSenha});
+        await schemaSignup.validate({ nome, email, senha, confirmacaoSenha });
 
         try {
-            const response = await api.post('/usuario', {
+            await api.post('/usuario', {
                 nome,
                 email,
                 senha
             });
 
-            console.log(response)
-        } catch (error) {
-            console.log(error);
+            toast.success(success.userCreated);
+            navigate('/');
+        } catch (err) {
+            toast.error(err.response.data.mensagem);
         }
     }
 
