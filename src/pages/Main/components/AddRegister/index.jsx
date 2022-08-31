@@ -1,14 +1,13 @@
 import * as A from './styles';
 import IconClose from '../../../../assets/IconClose.svg';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import useUser from '../../../../hooks/useUser';
 import useRequest from '../../../../hooks/useRequest';
 
 function AddRegister() {
 
-    const { listCategory } = useRequest();
-    const { setOpenModalAdd, categorys } = useUser();
-    const [btnClicked, setBtnClicked] = useState('saida');
+    const { listCategory, handleRegister } = useRequest();
+    const { setOpenModalAdd, categorys, btnClicked, setBtnClicked, setAddRegisterValue, setAddRegisterCategory, setAddRegisterDate, setAddRegisterDescription } = useUser();
     const btnEntryRef = useRef();
     const btnExitRef = useRef();
 
@@ -25,7 +24,6 @@ function AddRegister() {
         (async () => { await listCategory(); })()
     }, [])
 
-
     return (
         <A.Container>
             <div className='container'>
@@ -40,20 +38,20 @@ function AddRegister() {
                     </div>
                     <form>
                         <label>Valor</label>
-                        <input type="text" />
+                        <input type="text" onChange={(e) => setAddRegisterValue(e.target.value)} />
                         <label>Categoria</label>
-                        <select>
+                        <select onChange={(e) => setAddRegisterCategory(e.target.value)}>
                             {categorys.map((item) => (
-                                <option key={item.id}>{item.descricao}</option>
+                                <option key={item.id} value={item.id} >{item.descricao}</option>
                             ))}
                         </select>
                         <label>Data</label>
-                        <input type="text" />
+                        <input type="date" onChange={(e) => setAddRegisterDate(e.target.value)} />
                         <label>Descrição</label>
-                        <input type="text" />
+                        <input type="text" onChange={(e) => setAddRegisterDescription(e.target.value)} />
                     </form>
                 </div>
-                <button>Confirmar</button>
+                <button onClick={handleRegister}>Confirmar</button>
             </div>
         </A.Container>
     );
