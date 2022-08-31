@@ -2,10 +2,12 @@ import * as A from './styles';
 import IconClose from '../../../../assets/IconClose.svg';
 import { useEffect, useRef, useState } from 'react';
 import useUser from '../../../../hooks/useUser';
+import useRequest from '../../../../hooks/useRequest';
 
 function AddRegister() {
 
-    const { setOpenModalAdd } = useUser();
+    const { listCategory } = useRequest();
+    const { setOpenModalAdd, categorys } = useUser();
     const [btnClicked, setBtnClicked] = useState('saida');
     const btnEntryRef = useRef();
     const btnExitRef = useRef();
@@ -19,6 +21,10 @@ function AddRegister() {
             btnEntryRef.current.style = 'background: #B9B9B9;';
         }
     })
+    useEffect(() => {
+        (async () => { await listCategory(); })()
+    }, [])
+
 
     return (
         <A.Container>
@@ -37,9 +43,9 @@ function AddRegister() {
                         <input type="text" />
                         <label>Categoria</label>
                         <select>
-                            <option>teste</option>
-                            <option>teste</option>
-                            <option>teste</option>
+                            {categorys.map((item) => (
+                                <option key={item.id}>{item.descricao}</option>
+                            ))}
                         </select>
                         <label>Data</label>
                         <input type="text" />

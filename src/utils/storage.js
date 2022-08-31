@@ -3,5 +3,5 @@ export function setItem(item, value) {
 };
 
 export function getItem(item) {
-    localStorage.getItem(item);
+    return localStorage.getItem(item);
 };
