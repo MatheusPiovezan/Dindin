@@ -1,9 +1,20 @@
 import * as T from './styles';
+import { useEffect } from 'react';
+import useRequest from '../../../../hooks/useRequest';
+import useUser from '../../../../hooks/useUser';
+import { dayFormat, dateFormat, formatMoney } from '../../../../utils/formats';
 import IconPolygon from '../../../../assets/IconPolygon.svg';
 import IconEdit from '../../../../assets/IconEdit.svg';
 import IconDelete from '../../../../assets/IconDelete.svg';
 
 function Table() {
+    const { listTransactions } = useRequest();
+    const { tableListTransactions } = useUser();
+
+    useEffect(() => {
+        (async () => { await listTransactions(); })();
+    }, []);
+
     return (
         <T.Container>
             <div className='titles'>
@@ -16,17 +27,19 @@ function Table() {
                 <strong className='big'>Categoria</strong>
                 <strong className='small'>Valor</strong>
             </div>
-            <div className='table'>
-                <strong className='small date'>01/09/21</strong>
-                <span className='middle'>Segunda</span>
-                <span className='big'>Venda dos brigadeiros</span>
-                <span className='big'>Pix</span>
-                <strong className='small'>R$ 100,00</strong>
-                <div className='edit-delete'>
-                    <img src={IconEdit} />
-                    <img src={IconDelete} />
+            {tableListTransactions.map((transaction) => (
+                <div className='table' key={transaction.id}>
+                    <strong className='small date'>{dateFormat(transaction.data)}</strong>
+                    <span className='middle'>{dayFormat(transaction.data)}</span>
+                    <span className='big'>{transaction.descricao}</span>
+                    <span className='big'>{transaction.categoria_nome}</span>
+                    <strong className={`small ${transaction.tipo == 'entrada' ? 'value-purple' : 'value-orange'}`}>{formatMoney(transaction.valor)}</strong>
+                    <div className='edit-delete'>
+                        <img src={IconEdit} />
+                        <img src={IconDelete} />
+                    </div>
                 </div>
-            </div>
+            ))};
         </T.Container>
     );
 }

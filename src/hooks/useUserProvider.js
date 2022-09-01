@@ -11,6 +11,8 @@ function useUserProvider() {
     const [addRegisterDate, setAddRegisterDate] = useState('');
     const [addRegisterDescription, setAddRegisterDescription] = useState('');
 
+    const [tableListTransactions, setTableListTransactions] = useState([]);
+
     return {
         openModalAdd, setOpenModalAdd,
 
@@ -19,7 +21,9 @@ function useUserProvider() {
         addRegisterValue, setAddRegisterValue,
         addRegisterCategory, setAddRegisterCategory,
         addRegisterDate, setAddRegisterDate,
-        addRegisterDescription, setAddRegisterDescription
+        addRegisterDescription, setAddRegisterDescription,
+
+        tableListTransactions, setTableListTransactions,
     };
 }
 

@@ -65,6 +65,13 @@ font-family: 'Lato', sans-serif;
         font-size: 14px;
         line-height: 17px;
     }
+
+    .value-purple {
+        color: #6460FB;
+    }
+    .value-orange {
+        color: #FA8C10;
+    }
 }
 
 .date {

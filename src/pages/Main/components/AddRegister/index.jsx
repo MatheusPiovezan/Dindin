@@ -21,7 +21,7 @@ function AddRegister() {
         }
     })
     useEffect(() => {
-        (async () => { await listCategory(); })()
+        (async () => { await listCategory(); })();
     }, [])
 
     return (

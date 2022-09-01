@@ -4,7 +4,7 @@ import { getItem } from '../utils/storage';
 import { toast } from 'react-toastify';
 
 function useRequest() {
-    const { setCategorys, btnClicked, addRegisterValue, addRegisterCategory, addRegisterDate, addRegisterDescription, setOpenModalAdd } = useUser();
+    const { setCategorys, btnClicked, addRegisterValue, addRegisterCategory, addRegisterDate, addRegisterDescription, setOpenModalAdd, setTableListTransactions } = useUser();
 
     async function handleRegister(e) {
         e.preventDefault();
@@ -23,8 +23,9 @@ function useRequest() {
             })
 
             setOpenModalAdd(false);
-        } catch (err) {
-            toast.error(err.response.data.mensagem);
+            listTransactions();
+        } catch (error) {
+            toast.error(error.response.data.mensagem);
         }
     }
 
@@ -37,14 +38,29 @@ function useRequest() {
             });
 
             setCategorys(response.data);
-        } catch (err) {
-            toast.error(err.message);
+        } catch (error) {
+            toast.error(error.message);
+        }
+    }
+
+    async function listTransactions() {
+        try {
+            const response = await api.get('/transacao', {
+                headers: {
+                    Authorization: `Bearer ${getItem('token')}`
+                }
+            });
+
+            setTableListTransactions(response.data);
+        } catch (error) {
+            console.log(error)
         }
     }
 
     return {
         handleRegister,
-        listCategory
+        listCategory,
+        listTransactions
     }
 }
 
