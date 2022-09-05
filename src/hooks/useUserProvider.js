@@ -13,6 +13,8 @@ function useUserProvider() {
 
     const [tableListTransactions, setTableListTransactions] = useState([]);
 
+    const [extract, setExtract] = useState([]);
+
     return {
         openModalAdd, setOpenModalAdd,
 
@@ -24,6 +26,8 @@ function useUserProvider() {
         addRegisterDescription, setAddRegisterDescription,
 
         tableListTransactions, setTableListTransactions,
+
+        extract, setExtract
     };
 }
 

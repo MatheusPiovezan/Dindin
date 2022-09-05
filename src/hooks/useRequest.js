@@ -4,7 +4,7 @@ import { getItem } from '../utils/storage';
 import { toast } from 'react-toastify';
 
 function useRequest() {
-    const { setCategorys, btnClicked, addRegisterValue, addRegisterCategory, addRegisterDate, addRegisterDescription, setOpenModalAdd, setTableListTransactions } = useUser();
+    const { setCategorys, btnClicked, addRegisterValue, addRegisterCategory, addRegisterDate, addRegisterDescription, setOpenModalAdd, setTableListTransactions, setExtract } = useUser();
 
     async function handleRegister(e) {
         e.preventDefault();
@@ -53,14 +53,29 @@ function useRequest() {
 
             setTableListTransactions(response.data);
         } catch (error) {
-            console.log(error)
+            toast.error(error.message);
+        }
+    }
+
+    async function transactionExtract() {
+        try {
+            const response = await api.get('/transacao/extrato', {
+                headers: {
+                    Authorization: `Bearer ${getItem('token')}`
+                }
+            });
+
+            setExtract(response.data);
+        } catch (error) {
+            toast.error(error.message);
         }
     }
 
     return {
         handleRegister,
         listCategory,
-        listTransactions
+        listTransactions,
+        transactionExtract
     }
 }
 

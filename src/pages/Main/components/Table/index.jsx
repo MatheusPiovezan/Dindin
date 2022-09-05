@@ -1,4 +1,5 @@
 import * as T from './styles';
+import { Strong } from './styles'
 import { useEffect } from 'react';
 import useRequest from '../../../../hooks/useRequest';
 import useUser from '../../../../hooks/useUser';
@@ -33,7 +34,7 @@ function Table() {
                     <span className='middle'>{dayFormat(transaction.data)}</span>
                     <span className='big'>{transaction.descricao}</span>
                     <span className='big'>{transaction.categoria_nome}</span>
-                    <strong className={`small ${transaction.tipo == 'entrada' ? 'value-purple' : 'value-orange'}`}>{formatMoney(transaction.valor)}</strong>
+                    <Strong className='small value' valuecolor={transaction.tipo}>{formatMoney(transaction.valor)}</Strong>
                     <div className='edit-delete'>
                         <img src={IconEdit} />
                         <img src={IconDelete} />

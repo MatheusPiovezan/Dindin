@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const Container = styled.div`
 
@@ -65,13 +65,6 @@ font-family: 'Lato', sans-serif;
         font-size: 14px;
         line-height: 17px;
     }
-
-    .value-purple {
-        color: #6460FB;
-    }
-    .value-orange {
-        color: #FA8C10;
-    }
 }
 
 .date {
@@ -104,4 +97,8 @@ font-family: 'Lato', sans-serif;
 
     cursor: pointer;
 }
+`
+
+export const Strong = styled.strong`
+    ${props => props.valuecolor == 'entrada' ? css`color: #6460FB;` : css`color: #FA8C10;`}
 `
