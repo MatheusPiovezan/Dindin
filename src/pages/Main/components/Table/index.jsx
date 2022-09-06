@@ -4,13 +4,14 @@ import { useEffect } from 'react';
 import useRequest from '../../../../hooks/useRequest';
 import useUser from '../../../../hooks/useUser';
 import { dayFormat, dateFormat, formatMoney } from '../../../../utils/formats';
+import PopUpDeleteTransaction from '../PopupDeleteTransactions';
 import IconPolygon from '../../../../assets/IconPolygon.svg';
 import IconEdit from '../../../../assets/IconEdit.svg';
 import IconDelete from '../../../../assets/IconDelete.svg';
 
 function Table() {
     const { listTransactions } = useRequest();
-    const { tableListTransactions } = useUser();
+    const { tableListTransactions, popUp, setPopUp } = useUser();
 
     useEffect(() => {
         (async () => { await listTransactions(); })();
@@ -37,8 +38,13 @@ function Table() {
                     <Strong className='small value' valuecolor={transaction.tipo}>{formatMoney(transaction.valor)}</Strong>
                     <div className='edit-delete'>
                         <img src={IconEdit} />
-                        <img src={IconDelete} />
+                        <img src={IconDelete} onClick={() => setPopUp(true)} />
                     </div>
+                    {popUp &&
+                        <div className='popup-position'>
+                            <PopUpDeleteTransaction />
+                        </div>
+                    }
                 </div>
             ))};
         </T.Container>

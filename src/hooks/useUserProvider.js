@@ -15,6 +15,8 @@ function useUserProvider() {
 
     const [extract, setExtract] = useState([]);
 
+    const [popUp, setPopUp] = useState(false);
+
     return {
         openModalAdd, setOpenModalAdd,
 
@@ -27,7 +29,9 @@ function useUserProvider() {
 
         tableListTransactions, setTableListTransactions,
 
-        extract, setExtract
+        extract, setExtract,
+
+        popUp, setPopUp
     };
 }
 
