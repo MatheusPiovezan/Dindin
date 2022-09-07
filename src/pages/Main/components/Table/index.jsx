@@ -11,11 +11,16 @@ import IconDelete from '../../../../assets/IconDelete.svg';
 
 function Table() {
     const { listTransactions } = useRequest();
-    const { tableListTransactions, popUp, setPopUp } = useUser();
+    const { tableListTransactions, popUp, setPopUp, popUpCurrentItem, setPopUpCurrentItem } = useUser();
 
     useEffect(() => {
         (async () => { await listTransactions(); })();
     }, []);
+
+    function handleOpenPopup(transact) {
+        setPopUpCurrentItem(transact);
+        setPopUp(!popUp);
+    }
 
     return (
         <T.Container>
@@ -37,14 +42,20 @@ function Table() {
                     <span className='big'>{transaction.categoria_nome}</span>
                     <Strong className='small value' valuecolor={transaction.tipo}>{formatMoney(transaction.valor)}</Strong>
                     <div className='edit-delete'>
-                        <img src={IconEdit} />
-                        <img src={IconDelete} onClick={() => setPopUp(true)} />
-                    </div>
-                    {popUp &&
-                        <div className='popup-position'>
-                            <PopUpDeleteTransaction />
+                        <div >
+                            <img src={IconEdit} />
                         </div>
-                    }
+                        <div>
+                            <div>
+                                <img src={IconDelete} onClick={() => handleOpenPopup(transaction)} />
+                            </div>
+                            <div className='popup-position'>
+                                {popUp && transaction.id == popUpCurrentItem.id &&
+                                    <PopUpDeleteTransaction />
+                                }
+                            </div>
+                        </div>
+                    </div>
                 </div>
             ))};
         </T.Container>

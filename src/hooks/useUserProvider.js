@@ -16,6 +16,7 @@ function useUserProvider() {
     const [extract, setExtract] = useState([]);
 
     const [popUp, setPopUp] = useState(false);
+    const [popUpCurrentItem, setPopUpCurrentItem] = useState(null);
 
     return {
         openModalAdd, setOpenModalAdd,
@@ -31,7 +32,8 @@ function useUserProvider() {
 
         extract, setExtract,
 
-        popUp, setPopUp
+        popUp, setPopUp,
+        popUpCurrentItem, setPopUpCurrentItem
     };
 }
 

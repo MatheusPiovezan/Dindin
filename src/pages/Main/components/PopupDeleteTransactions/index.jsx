@@ -1,8 +1,17 @@
 import * as P from './styles';
 import useUser from '../../../../hooks/useUser';
+import useRequest from '../../../../hooks/useRequest';
 
 function PopUpDeleteTransaction() {
-    const { setPopUp } = useUser();
+    const { setPopUp, popUpCurrentItem } = useUser();
+    const { deleteTransact, listTransactions } = useRequest();
+
+    async function deleteT() {
+        setPopUp(false);
+
+        await (async () => { await deleteTransact(popUpCurrentItem.id); })();
+        await (async () => { await listTransactions(); })();
+    }
 
     return (
         <P.Container>
@@ -12,7 +21,7 @@ function PopUpDeleteTransaction() {
                 <span>Apagar Item?</span>
             </div>
             <div className='btn-popup'>
-                <button>Sim</button>
+                <button onClick={deleteT}>Sim</button>
                 <button onClick={() => setPopUp(false)}>Não</button>
             </div>
         </P.Container>

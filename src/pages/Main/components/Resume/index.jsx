@@ -10,7 +10,7 @@ function Resume() {
 
     useEffect(() => {
         (async () => { await transactionExtract(); })()
-    })
+    }, [])
 
     return (
         <R.Container>

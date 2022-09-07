@@ -5,7 +5,8 @@ const message = {
     createBilling: 'Cobrança registrada com sucesso',
     BillDeletSuccess: 'Cobrança excluida com sucesso.',
     BillingEdit: 'Cobrança editada com sucesso!',
-    usersLoggedInSuccessfully: 'Usuário logado com sucesso'
+    usersLoggedInSuccessfully: 'Usuário logado com sucesso',
+    transactionDeletSuccess: 'Transação excluida com sucesso.'
 };
 
 // 200 (OK) = requisição bem sucedida

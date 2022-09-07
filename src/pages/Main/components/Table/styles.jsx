@@ -65,6 +65,28 @@ font-family: 'Lato', sans-serif;
         font-size: 14px;
         line-height: 17px;
     }
+
+    .edit-delete {
+        display: flex;
+        align-items: center;
+
+        margin: 0 0 0 45px;
+        gap: 13px;
+
+        img {
+            cursor: pointer;
+        }
+
+    
+        .popup-position {
+            display: flex;
+            flex-direction: column;
+        
+            position: fixed;
+            margin-top: 6px;
+            margin-left: -110px;
+        }
+    }
 }
 
 .date {
@@ -86,16 +108,6 @@ font-family: 'Lato', sans-serif;
 .big {
     text-align: center;
     width: 25%;
-}
-
-.edit-delete {
-    display: flex;
-    align-items: center;
-
-    margin: 0 0 0 45px;
-    gap: 13px;
-
-    cursor: pointer;
 }
 `
 

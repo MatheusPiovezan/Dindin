@@ -2,6 +2,7 @@ import api from '../services/api';
 import useUser from './useUser';
 import { getItem } from '../utils/storage';
 import { toast } from 'react-toastify';
+import success from '../messages/success';
 
 function useRequest() {
     const { setCategorys, btnClicked, addRegisterValue, addRegisterCategory, addRegisterDate, addRegisterDescription, setOpenModalAdd, setTableListTransactions, setExtract } = useUser();
@@ -52,6 +53,7 @@ function useRequest() {
             });
 
             setTableListTransactions(response.data);
+            transactionExtract();
         } catch (error) {
             toast.error(error.message);
         }
@@ -71,11 +73,26 @@ function useRequest() {
         }
     }
 
+    async function deleteTransact(id) {
+        try {
+            await api.delete(`/transacao/${id}`, {
+                headers: {
+                    Authorization: `Bearer ${getItem('token')}`
+                }
+            });
+
+            toast.success(success.transactionDeletSuccess);
+        } catch (error) {
+            toast.error(error.response.data.mensagem);
+        }
+    }
+
     return {
         handleRegister,
         listCategory,
         listTransactions,
-        transactionExtract
+        transactionExtract,
+        deleteTransact
     }
 }
 
