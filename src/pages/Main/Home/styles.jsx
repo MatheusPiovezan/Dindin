@@ -26,6 +26,10 @@ background: linear-gradient(90.23deg, #05EDE3 0.02%, #645FFB 99.63%);
 
                 color: #FFFFFF;
             }
+
+            img {
+                cursor: pointer;
+            }
         }
     }
 

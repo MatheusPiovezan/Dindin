@@ -18,6 +18,13 @@ function useUserProvider() {
     const [popUp, setPopUp] = useState(false);
     const [popUpCurrentItem, setPopUpCurrentItem] = useState(null);
 
+    const [openModalUser, setOpenModalUser] = useState(false);
+    const [user, setUser] = useState([]);
+    const [editUserName, setEditUserName] = useState('');
+    const [editUserEmail, setEditUserEmail] = useState('');
+    const [editUserPassword, setEditUserPassword] = useState('');
+    const [editUserPasswordConfirm, setEditUserPasswordConfirm] = useState('');
+
     return {
         openModalAdd, setOpenModalAdd,
 
@@ -33,7 +40,14 @@ function useUserProvider() {
         extract, setExtract,
 
         popUp, setPopUp,
-        popUpCurrentItem, setPopUpCurrentItem
+        popUpCurrentItem, setPopUpCurrentItem,
+
+        openModalUser, setOpenModalUser,
+        user, setUser,
+        editUserName, setEditUserName,
+        editUserEmail, setEditUserEmail,
+        editUserPassword, setEditUserPassword,
+        editUserPasswordConfirm, setEditUserPasswordConfirm
     };
 }
 

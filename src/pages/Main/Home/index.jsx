@@ -1,5 +1,7 @@
 import * as H from './styles';
+import { useEffect } from 'react';
 import useUser from '../../../hooks/useUser';
+import useRequest from '../../../hooks/useRequest';
 import Filter from '../components/Filter';
 import Resume from '../components/Resume';
 import EditUser from '../../../components/EditUser';
@@ -9,7 +11,12 @@ import IconAvatar from '../../../assets/IconAvatar.svg';
 import IconExit from '../../../assets/IconExit.svg';
 
 function Home() {
-  const { openModalAdd } = useUser();
+  const { openModalAdd, openModalUser, setOpenModalUser, user } = useUser();
+  const { getUser } = useRequest();
+
+  useEffect(() => {
+    (async () => { await getUser(); })()
+  }, []);
 
   return (
     <H.Container>
@@ -18,8 +25,8 @@ function Home() {
           <img src={Logo} />
         </div>
         <div className='user'>
-          <img src={IconAvatar} />
-          <span>Matheus</span>
+          <img src={IconAvatar} onClick={() => setOpenModalUser(true)} />
+          <span>{user.nome}</span>
           <img src={IconExit} />
         </div>
       </div>
@@ -29,7 +36,7 @@ function Home() {
           <Resume />
         </div>
       </div>
-      <EditUser />
+      {openModalUser && <EditUser />}
       {openModalAdd && <AddRegister />}
     </H.Container>
   );

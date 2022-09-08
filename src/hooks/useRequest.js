@@ -3,9 +3,13 @@ import useUser from './useUser';
 import { getItem } from '../utils/storage';
 import { toast } from 'react-toastify';
 import success from '../messages/success';
+import schemaEditUser from '../schemas/schemaEditUser';
 
 function useRequest() {
-    const { setCategorys, btnClicked, addRegisterValue, addRegisterCategory, addRegisterDate, addRegisterDescription, setOpenModalAdd, setTableListTransactions, setExtract } = useUser();
+    const { setCategorys, btnClicked, addRegisterValue, addRegisterCategory,
+        addRegisterDate, addRegisterDescription, setOpenModalAdd, setTableListTransactions,
+        setExtract, setUser, editUserName, editUserEmail,
+        editUserPassword, editUserPasswordConfirm, setOpenModalUser } = useUser();
 
     async function handleRegister(e) {
         e.preventDefault();
@@ -87,12 +91,51 @@ function useRequest() {
         }
     }
 
+    async function getUser() {
+        try {
+            const response = await api.get('/usuario', {
+                headers: {
+                    Authorization: `Bearer ${getItem('token')}`
+                }
+            });
+
+            setUser(response.data);
+        } catch (error) {
+            toast.error(error.message);
+        }
+    }
+
+    async function handlePutUserSubmit(e) {
+        e.preventDefault();
+
+        try {
+            await schemaEditUser.validate({ editUserName, editUserEmail, editUserPassword, editUserPasswordConfirm });
+
+            await api.put('/usuario', {
+                nome: editUserName,
+                email: editUserEmail,
+                senha: editUserPassword,
+            }, {
+                headers: {
+                    Authorization: `Bearer ${getItem('token')}`
+                }
+            });
+
+            getUser();
+            setOpenModalUser(false);
+        } catch (error) {
+            toast.error(error.message);
+        }
+    }
+
     return {
         handleRegister,
         listCategory,
         listTransactions,
         transactionExtract,
-        deleteTransact
+        deleteTransact,
+        getUser,
+        handlePutUserSubmit
     }
 }
 
