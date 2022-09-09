@@ -5,3 +5,7 @@ export function setItem(item, value) {
 export function getItem(item) {
     return localStorage.getItem(item);
 };
+
+export function clearItems() {
+    localStorage.clear();
+};

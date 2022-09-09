@@ -1,7 +1,9 @@
 import * as H from './styles';
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import useUser from '../../../hooks/useUser';
 import useRequest from '../../../hooks/useRequest';
+import { clearItems } from '../../../utils/storage';
 import Filter from '../components/Filter';
 import Resume from '../components/Resume';
 import EditUser from '../../../components/EditUser';
@@ -13,10 +15,16 @@ import IconExit from '../../../assets/IconExit.svg';
 function Home() {
   const { openModalAdd, openModalUser, setOpenModalUser, user } = useUser();
   const { getUser } = useRequest();
+  const navigate = useNavigate();
 
   useEffect(() => {
     (async () => { await getUser(); })()
   }, []);
+
+  function logOut() {
+    clearItems();
+    navigate('/');
+  }
 
   return (
     <H.Container>
@@ -27,7 +35,7 @@ function Home() {
         <div className='user'>
           <img src={IconAvatar} onClick={() => setOpenModalUser(true)} />
           <span>{user.nome}</span>
-          <img src={IconExit} />
+          <img src={IconExit} onClick={() => logOut()} />
         </div>
       </div>
       <div className='home'>
