@@ -2,10 +2,12 @@ import { useState } from 'react';
 
 function useUserProvider() {
 
-    const [openModalAdd, setOpenModalAdd] = useState(false);
 
     const [categorys, setCategorys] = useState([]);
+
     const [btnClicked, setBtnClicked] = useState('saida');
+
+    const [openModalAdd, setOpenModalAdd] = useState(false);
     const [addRegisterValue, setAddRegisterValue] = useState('');
     const [addRegisterCategory, setAddRegisterCategory] = useState('');
     const [addRegisterDate, setAddRegisterDate] = useState('');
@@ -24,6 +26,12 @@ function useUserProvider() {
     const [editUserEmail, setEditUserEmail] = useState('');
     const [editUserPassword, setEditUserPassword] = useState('');
     const [editUserPasswordConfirm, setEditUserPasswordConfirm] = useState('');
+
+    const [openModalEditTransact, setOpenModalEditTransact] = useState(false);
+    const [editTransactionValue, setEditTransactionValue] = useState('');
+    const [editTransactionCategory, setEditTransactionCategory] = useState('');
+    const [editTransactionDate, setEditTransactionDate] = useState('');
+    const [editTransactionDescription, setEditTransactionDescription] = useState('');
 
     return {
         openModalAdd, setOpenModalAdd,
@@ -47,7 +55,13 @@ function useUserProvider() {
         editUserName, setEditUserName,
         editUserEmail, setEditUserEmail,
         editUserPassword, setEditUserPassword,
-        editUserPasswordConfirm, setEditUserPasswordConfirm
+        editUserPasswordConfirm, setEditUserPasswordConfirm,
+
+        editTransactionValue, setEditTransactionValue,
+        editTransactionCategory, setEditTransactionCategory,
+        editTransactionDate, setEditTransactionDate,
+        editTransactionDescription, setEditTransactionDescription,
+        openModalEditTransact, setOpenModalEditTransact
     };
 }
 

@@ -8,8 +8,9 @@ import schemaEditUser from '../schemas/schemaEditUser';
 function useRequest() {
     const { setCategorys, btnClicked, addRegisterValue, addRegisterCategory,
         addRegisterDate, addRegisterDescription, setOpenModalAdd, setTableListTransactions,
-        setExtract, setUser, editUserName, editUserEmail,
-        editUserPassword, editUserPasswordConfirm, setOpenModalUser } = useUser();
+        setExtract, setUser, editUserName, editUserEmail, editUserPassword, editUserPasswordConfirm,
+        setOpenModalUser, editTransactionValue, editTransactionCategory, editTransactionDate,
+        editTransactionDescription, setOpenModalEditTransact } = useUser();
 
     async function handleRegister(e) {
         e.preventDefault();
@@ -128,6 +129,29 @@ function useRequest() {
         }
     }
 
+    async function handleEditTransaction(e) {
+        e.preventDefault();
+
+        try {
+            await api.put(`/transacao/$id`, {
+                tipo: btnClicked,
+                descricao: editTransactionDescription,
+                valor: Number(editTransactionValue),
+                data: editTransactionDate,
+                categoria_id: Number(editTransactionCategory),
+            }, {
+                headers: {
+                    Authorization: `Bearer ${getItem('token')}`
+                }
+            })
+
+            setOpenModalEditTransact(false);
+            listTransactions();
+        } catch (error) {
+            toast.error(error.response.data.mensagem);
+        }
+    }
+
     return {
         handleRegister,
         listCategory,
@@ -135,7 +159,8 @@ function useRequest() {
         transactionExtract,
         deleteTransact,
         getUser,
-        handlePutUserSubmit
+        handlePutUserSubmit,
+        handleEditTransaction
     }
 }
 

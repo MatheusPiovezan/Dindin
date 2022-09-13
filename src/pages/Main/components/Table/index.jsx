@@ -11,7 +11,7 @@ import IconDelete from '../../../../assets/IconDelete.svg';
 
 function Table() {
     const { listTransactions } = useRequest();
-    const { tableListTransactions, popUp, setPopUp, popUpCurrentItem, setPopUpCurrentItem } = useUser();
+    const { tableListTransactions, popUp, setPopUp, popUpCurrentItem, setPopUpCurrentItem, setOpenModalEditTransact } = useUser();
 
     useEffect(() => {
         (async () => { await listTransactions(); })();
@@ -43,7 +43,7 @@ function Table() {
                     <Strong className='small value' valuecolor={transaction.tipo}>{formatMoney(transaction.valor)}</Strong>
                     <div className='edit-delete'>
                         <div >
-                            <img src={IconEdit} />
+                            <img src={IconEdit} onClick={() => setOpenModalEditTransact(true)} />
                         </div>
                         <div>
                             <div>
