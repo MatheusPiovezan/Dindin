@@ -22,6 +22,11 @@ function AddRegister() {
     })
     useEffect(() => {
         (async () => { await listCategory(); })();
+
+        setAddRegisterValue('');
+        setAddRegisterCategory('');
+        setAddRegisterDate('');
+        setAddRegisterDescription('');
     }, [])
 
     return (
@@ -41,6 +46,7 @@ function AddRegister() {
                         <input type="text" onChange={(e) => setAddRegisterValue(e.target.value)} />
                         <label>Categoria</label>
                         <select onChange={(e) => setAddRegisterCategory(e.target.value)}>
+                            <option>Selecione</option>
                             {categorys.map((item) => (
                                 <option key={item.id} value={item.id} >{item.descricao}</option>
                             ))}

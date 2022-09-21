@@ -8,6 +8,7 @@ import PopUpDeleteTransaction from '../PopupDeleteTransactions';
 import IconPolygon from '../../../../assets/IconPolygon.svg';
 import IconEdit from '../../../../assets/IconEdit.svg';
 import IconDelete from '../../../../assets/IconDelete.svg';
+import { setItem } from '../../../../utils/storage';
 
 function Table() {
     const { listTransactions } = useRequest();
@@ -43,7 +44,7 @@ function Table() {
                     <Strong className='small value' valuecolor={transaction.tipo}>{formatMoney(transaction.valor)}</Strong>
                     <div className='edit-delete'>
                         <div >
-                            <img src={IconEdit} onClick={() => setOpenModalEditTransact(true)} />
+                            <img src={IconEdit} onClick={() => { { setOpenModalEditTransact(true) } { setItem('idTransact', transaction.id) } }} />
                         </div>
                         <div>
                             <div>

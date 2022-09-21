@@ -10,7 +10,8 @@ function useRequest() {
         addRegisterDate, addRegisterDescription, setOpenModalAdd, setTableListTransactions,
         setExtract, setUser, editUserName, editUserEmail, editUserPassword, editUserPasswordConfirm,
         setOpenModalUser, editTransactionValue, editTransactionCategory, editTransactionDate,
-        editTransactionDescription, setOpenModalEditTransact } = useUser();
+        editTransactionDescription, setOpenModalEditTransact, setBtnClicked, setEditTransactionValue,
+        setEditTransactionCategory, setEditTransactionDate, setEditTransactionDescription } = useUser();
 
     async function handleRegister(e) {
         e.preventDefault();
@@ -133,7 +134,7 @@ function useRequest() {
         e.preventDefault();
 
         try {
-            await api.put(`/transacao/$id`, {
+            await api.put(`/transacao/${getItem('idTransact')}`, {
                 tipo: btnClicked,
                 descricao: editTransactionDescription,
                 valor: Number(editTransactionValue),
@@ -152,6 +153,24 @@ function useRequest() {
         }
     }
 
+    async function getTransactionId() {
+        try {
+            const response = await api.get(`/transacao/${getItem('idTransact')}`, {
+                headers: {
+                    Authorization: `Bearer ${getItem('token')}`
+                }
+            });
+
+            setBtnClicked(response.data.tipo);
+            setEditTransactionValue(response.data.valor);
+            setEditTransactionCategory(response.data.categoria_id);
+            setEditTransactionDate(response.data.data);
+            setEditTransactionDescription(response.data.descricao);
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
     return {
         handleRegister,
         listCategory,
@@ -160,7 +179,8 @@ function useRequest() {
         deleteTransact,
         getUser,
         handlePutUserSubmit,
-        handleEditTransaction
+        handleEditTransaction,
+        getTransactionId
     }
 }
 

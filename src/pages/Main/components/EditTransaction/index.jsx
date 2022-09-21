@@ -3,11 +3,12 @@ import IconClose from '../../../../assets/IconClose.svg';
 import { useEffect, useRef } from 'react';
 import useUser from '../../../../hooks/useUser';
 import useRequest from '../../../../hooks/useRequest';
+import { dateFormat } from '../../../../utils/formats';
 
 function EditTransaction() {
 
-    const { listCategory, handleEditTransaction } = useRequest();
-    const { setOpenModalEditTransact, categorys, btnClicked, setBtnClicked, setEditTransactionValue, setEditTransactionCategory, setEditTransactionDate, setEditTransactionDescription } = useUser();
+    const { handleEditTransaction, getTransactionId, listCategory } = useRequest();
+    const { setOpenModalEditTransact, categorys, btnClicked, setBtnClicked, setEditTransactionValue, editTransactionValue, setEditTransactionCategory, editTransactionCategory, setEditTransactionDate, editTransactionDate, setEditTransactionDescription, editTransactionDescription } = useUser();
     const btnEntryRef = useRef();
     const btnExitRef = useRef();
 
@@ -19,9 +20,11 @@ function EditTransaction() {
             btnExitRef.current.style = 'background: #FF576B;';
             btnEntryRef.current.style = 'background: #B9B9B9;';
         }
-    })
+    });
+
     useEffect(() => {
         (async () => { await listCategory(); })();
+        getTransactionId();
     }, []);
 
     return (
@@ -38,17 +41,18 @@ function EditTransaction() {
                     </div>
                     <form>
                         <label>Valor</label>
-                        <input type="text" onChange={(e) => setEditTransactionValue(e.target.value)} />
+                        <input value={editTransactionValue} type="text" onChange={(e) => setEditTransactionValue(e.target.value)} />
                         <label>Categoria</label>
-                        <select onChange={(e) => setEditTransactionCategory(e.target.value)}>
+                        <select value={editTransactionCategory} onChange={(e) => setEditTransactionCategory(e.target.value)}>
+                            <option>Selecione</option>
                             {categorys.map((item) => (
                                 <option key={item.id} value={item.id} >{item.descricao}</option>
                             ))}
                         </select>
                         <label>Data</label>
-                        <input type="date" onChange={(e) => setEditTransactionDate(e.target.value)} />
+                        <input value={editTransactionDate} type="date" onChange={(e) => setEditTransactionDate(e.target.value)} />
                         <label>Descrição</label>
-                        <input type="text" onChange={(e) => setEditTransactionDescription(e.target.value)} />
+                        <input value={editTransactionDescription} type="text" onChange={(e) => setEditTransactionDescription(e.target.value)} />
                     </form>
                 </div>
                 <button onClick={handleEditTransaction}>Confirmar</button>
@@ -58,3 +62,4 @@ function EditTransaction() {
 }
 
 export default EditTransaction;
+

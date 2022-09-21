@@ -19,7 +19,7 @@ function Home() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    (async () => { await getUser(); })()
+    (async () => { await getUser(); })();
   }, []);
 
   function logOut() {

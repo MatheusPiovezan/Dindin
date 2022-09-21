@@ -61,7 +61,7 @@ function useUserProvider() {
         editTransactionCategory, setEditTransactionCategory,
         editTransactionDate, setEditTransactionDate,
         editTransactionDescription, setEditTransactionDescription,
-        openModalEditTransact, setOpenModalEditTransact
+        openModalEditTransact, setOpenModalEditTransact,
     };
 }
 
