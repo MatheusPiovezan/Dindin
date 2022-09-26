@@ -126,7 +126,7 @@ function useRequest() {
             getUser();
             setOpenModalUser(false);
         } catch (error) {
-            toast.error(error.message);
+            console.log(error.message);
         }
     }
 
@@ -167,7 +167,7 @@ function useRequest() {
             setEditTransactionDate(response.data.data);
             setEditTransactionDescription(response.data.descricao);
         } catch (error) {
-            console.log(error)
+            toast.error(error.message);
         }
     }
 

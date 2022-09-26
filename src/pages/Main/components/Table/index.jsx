@@ -1,11 +1,12 @@
 import * as T from './styles';
 import { Strong } from './styles'
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import useRequest from '../../../../hooks/useRequest';
 import useUser from '../../../../hooks/useUser';
 import { dayFormat, dateFormat, formatMoney } from '../../../../utils/formats';
 import PopUpDeleteTransaction from '../PopupDeleteTransactions';
-import IconPolygon from '../../../../assets/IconPolygon.svg';
+import IconPolygonUp from '../../../../assets/IconPolygonUp.svg';
+import IconPolygonDown from '../../../../assets/IconPolygonDown.svg';
 import IconEdit from '../../../../assets/IconEdit.svg';
 import IconDelete from '../../../../assets/IconDelete.svg';
 import { setItem } from '../../../../utils/storage';
@@ -13,10 +14,21 @@ import { setItem } from '../../../../utils/storage';
 function Table() {
     const { listTransactions } = useRequest();
     const { tableListTransactions, popUp, setPopUp, popUpCurrentItem, setPopUpCurrentItem, setOpenModalEditTransact } = useUser();
+    const [orderTransact, setOrderTransact] = useState([]);
+    const [asc, setAsc] = useState(true);
 
     useEffect(() => {
         (async () => { await listTransactions(); })();
     }, []);
+
+    useEffect(() => {
+        const localTransaction = [...tableListTransactions];
+
+        asc ? localTransaction.sort((a, b) => new Date(a.data) - new Date(b.data)) :
+            localTransaction.sort((a, b) => new Date(b.data) - new Date(a.data));
+
+        setOrderTransact([...localTransaction]);
+    }, [asc, tableListTransactions])
 
     function handleOpenPopup(transact) {
         setPopUpCurrentItem(transact);
@@ -26,16 +38,16 @@ function Table() {
     return (
         <T.Container>
             <div className='titles'>
-                <div className='small date'>
+                <div className='small date' onClick={() => setAsc(!asc)}>
                     <strong>Data</strong>
-                    <img src={IconPolygon} />
+                    <img src={asc ? IconPolygonUp : IconPolygonDown} />
                 </div>
                 <strong className='middle'>Dia da semana</strong>
                 <strong className='big'>Descrição</strong>
                 <strong className='big'>Categoria</strong>
                 <strong className='small'>Valor</strong>
             </div>
-            {tableListTransactions.map((transaction) => (
+            {orderTransact.map((transaction) => (
                 <div className='table' key={transaction.id}>
                     <strong className='small date'>{dateFormat(transaction.data)}</strong>
                     <span className='middle'>{dayFormat(transaction.data)}</span>

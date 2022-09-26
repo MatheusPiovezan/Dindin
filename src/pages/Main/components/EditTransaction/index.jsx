@@ -50,7 +50,7 @@ function EditTransaction() {
                             ))}
                         </select>
                         <label>Data</label>
-                        <input value={editTransactionDate} type="date" onChange={(e) => setEditTransactionDate(e.target.value)} />
+                        <input value={dateFormat(editTransactionDate)} type="text" onChange={(e) => setEditTransactionDate(e.target.value)} />
                         <label>Descrição</label>
                         <input value={editTransactionDescription} type="text" onChange={(e) => setEditTransactionDescription(e.target.value)} />
                     </form>

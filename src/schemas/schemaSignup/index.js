@@ -16,6 +16,7 @@ const schemaSignup = yup.object().shape({
     confirmacaoSenha: yup.string()
         .trim()
         .required(() => toast.error(error.confirmPasswordDontExists))
+        .oneOf([yup.ref('senha')], () => toast.error(error.passwordsAreNotTheSame))
 });
 
 export default schemaSignup;

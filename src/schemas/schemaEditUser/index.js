@@ -16,6 +16,7 @@ const schemaEditUser = yup.object().shape({
     editUserPasswordConfirm: yup.string()
         .trim()
         .required(() => toast.error(error.confirmPasswordDontExists))
+        .oneOf([yup.ref('editUserPassword')], () => toast.error(error.passwordsAreNotTheSame))
 });
 
 export default schemaEditUser;
