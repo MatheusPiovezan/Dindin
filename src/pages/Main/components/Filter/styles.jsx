@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const Container = styled.div`
 
@@ -102,4 +102,7 @@ font-family: 'Rubik', sans-serif;
             color: #FFFFFF;
         }
     }
+`
+export const Div = styled.div`
+    ${props => props.colorDiv == props.colorDiv ? css`background-color: #6460FB;` : css`background-color: #FA8C10;`}
 `

@@ -20,7 +20,7 @@ function MyRoutes() {
                 <Route path='/signin' element={<Login />} />
             </Route>
             <Route path='/signup' element={<SignUp />} />
-            <Route element={<ProtectedRoutes redirectTo={'/'} />}>
+            <Route element={<ProtectedRoutes redirectTo='/' />}>
                 <Route path='/home' element={<Home />} />
             </Route>
             <Route path='*' element={<ErrorPage />} />
