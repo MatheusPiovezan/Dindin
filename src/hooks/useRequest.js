@@ -11,7 +11,7 @@ function useRequest() {
         setExtract, setUser, editUserName, editUserEmail, editUserPassword, editUserPasswordConfirm,
         setOpenModalUser, editTransactionValue, editTransactionCategory, editTransactionDate,
         editTransactionDescription, setOpenModalEditTransact, setBtnClicked, setEditTransactionValue,
-        setEditTransactionCategory, setEditTransactionDate, setEditTransactionDescription } = useUser();
+        setEditTransactionCategory, setEditTransactionDate, setEditTransactionDescription, setCategorysFilter } = useUser();
 
     async function handleRegister(e) {
         e.preventDefault();
@@ -44,7 +44,12 @@ function useRequest() {
                 }
             });
 
-            setCategorys(response.data);
+            const categorys = response.data;
+
+            categorys.forEach((category) => {
+                category.checked = false;
+            });
+            setCategorys([...categorys]);
         } catch (error) {
             toast.error(error.message);
         }

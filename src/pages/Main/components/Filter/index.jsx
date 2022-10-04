@@ -3,23 +3,28 @@ import { useEffect, useState } from 'react';
 import useUser from '../../../../hooks/useUser';
 import useRequest from '../../../../hooks/useRequest';
 import Table from '../Table';
+import Chip from '../Chip';
 import IconFilter from '../../../../assets/IconFilter.svg';
-import IconMais from '../../../../assets/IconMais.svg';
-import { useRef } from 'react';
 
 function Filter() {
     const { listCategory } = useRequest();
     const { categorys } = useUser();
     const [openFilter, setOpenFilter] = useState(false);
-    const FilterRef = useRef();
-
+    const [categorysFilter, setCategorysFilter] = useState();
     const arrayFilter = [];
 
-    console.log(arrayFilter);
+    function clearFilters() {
+        const localCategorys = [...categorys];
+
+        localCategorys.forEach((category) => category.checked = false);
+        setCategorysFilter([...localCategorys]);
+    }
 
     useEffect(() => {
         (async () => { await listCategory(); })();
-    }, []);
+
+        setCategorysFilter(categorys);
+    }, [openFilter]);
 
     return (
         <F.Container>
@@ -31,20 +36,17 @@ function Filter() {
                     <div className='div-strong'>
                         <strong>Categoria</strong>
                     </div>
-                    {categorys.map((category) => (
-                        <F.Div className='categorys' key={category.id} ref={FilterRef} colorDiv={category.descricao} onClick={() => FilterRef.current.style = 'background: #3A9FF1;'}>
-                            <span>{category.descricao}</span>
-                            <img src={IconMais} />
-                        </F.Div>
+                    {categorysFilter.map((category) => (
+                        <Chip key={category.id} checked={category.checked} categoryDescricao={category.descricao} id={category.id} categorysFilter={categorysFilter} setCategorysFilter={setCategorysFilter} />
                     ))}
                     <div className='buttons'>
-                        <button>Limpar Filtros</button>
+                        <button onClick={clearFilters}>Limpar Filtros</button>
                         <button>Aplicar Filtros</button>
                     </div>
                 </div>
             }
             <Table />
-        </F.Container>
+        </F.Container >
     );
 }
 

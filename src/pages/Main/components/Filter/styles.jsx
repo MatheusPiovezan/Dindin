@@ -47,27 +47,6 @@ font-family: 'Rubik', sans-serif;
 
             color: #B9B9B9;
         }
-
-        .categorys {
-            display: inline-block;
-
-            padding: 4px 10px;
-            margin: 0 12px 9px 0;
-            
-            background-color: #FAFAFA;
-            box-shadow: 0px 2px 11px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-            cursor: pointer;
-
-            span {
-                margin: 0 10px 0 0;
-
-                font-style: normal;
-                font-weight: 400;
-                font-size: 10px;
-                line-height: 12px;
-            }
-        }
     }
 
     .buttons {
@@ -104,5 +83,5 @@ font-family: 'Rubik', sans-serif;
     }
 `
 export const Div = styled.div`
-    ${props => props.colorDiv == props.colorDiv ? css`background-color: #6460FB;` : css`background-color: #FA8C10;`}
+    ${props => props.colorDiv && css`background-color: #6460FB;`}
 `
