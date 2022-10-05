@@ -176,6 +176,22 @@ function useRequest() {
         }
     }
 
+    async function listTransactionsFilter(filters) {
+        const joinFilters = filters.join('&')
+
+        try {
+            const response = await api.get(`/transacao?${joinFilters}`, {
+                headers: {
+                    Authorization: `Bearer ${getItem('token')}`
+                }
+            });
+
+            setTableListTransactions(response.data);
+        } catch (error) {
+            toast.error(error.message);
+        }
+    }
+
     return {
         handleRegister,
         listCategory,
@@ -185,7 +201,8 @@ function useRequest() {
         getUser,
         handlePutUserSubmit,
         handleEditTransaction,
-        getTransactionId
+        getTransactionId,
+        listTransactionsFilter
     }
 }
 

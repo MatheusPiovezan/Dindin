@@ -7,17 +7,35 @@ import Chip from '../Chip';
 import IconFilter from '../../../../assets/IconFilter.svg';
 
 function Filter() {
-    const { listCategory } = useRequest();
+    const { listCategory, listTransactionsFilter, listTransactions } = useRequest();
     const { categorys } = useUser();
     const [openFilter, setOpenFilter] = useState(false);
     const [categorysFilter, setCategorysFilter] = useState();
-    const arrayFilter = [];
 
     function clearFilters() {
         const localCategorys = [...categorys];
 
         localCategorys.forEach((category) => category.checked = false);
         setCategorysFilter([...localCategorys]);
+
+        (async () => { await listTransactions(); })();
+    }
+
+    function toApllyFilter() {
+        const localCategorys = [...categorysFilter];
+        const arrayFilter = [];
+
+        localCategorys.forEach((category) => {
+            if (category.checked) {
+                arrayFilter.push(`filtro[]=${category.descricao}`);
+            }
+        });
+
+        if (!arrayFilter.length) {
+            return console.log('entrou');;
+        }
+
+        (async () => { await listTransactionsFilter(arrayFilter); })();
     }
 
     useEffect(() => {
@@ -37,11 +55,19 @@ function Filter() {
                         <strong>Categoria</strong>
                     </div>
                     {categorysFilter.map((category) => (
-                        <Chip key={category.id} checked={category.checked} categoryDescricao={category.descricao} id={category.id} categorysFilter={categorysFilter} setCategorysFilter={setCategorysFilter} />
+                        <Chip
+                            key={category.id}
+                            checked={category.checked}
+                            categoryDescricao={category.descricao}
+                            id={category.id}
+                            categorysFilter={categorysFilter}
+                            setCategorysFilter={setCategorysFilter}
+                        />
                     ))}
                     <div className='buttons'>
                         <button onClick={clearFilters}>Limpar Filtros</button>
-                        <button>Aplicar Filtros</button>
+                        <button onClick={toApllyFilter}
+                        >Aplicar Filtros</button>
                     </div>
                 </div>
             }
