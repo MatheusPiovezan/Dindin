@@ -32,7 +32,7 @@ function Filter() {
         });
 
         if (!arrayFilter.length) {
-            return console.log('entrou');;
+            return;
         }
 
         (async () => { await listTransactionsFilter(arrayFilter); })();
