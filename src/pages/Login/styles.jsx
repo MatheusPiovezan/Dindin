@@ -13,11 +13,13 @@ background-size: cover;
 }
 
 .registration {
+    width: 40%;
+
     h1 {
         font-style: normal;
         font-weight: 700;
-        font-size: 52px;
-        line-height: 62px;
+        font-size: 5.2rem;
+        line-height: 6.2rem;
 
         color: #FFFFFF;
 
@@ -27,12 +29,12 @@ background-size: cover;
     }
 
     p {
-        margin: 30px 100px 40px 0;
+        margin: 3.0rem 0 4.0rem 0;
 
         font-style: normal;
         font-weight: 400;
-        font-size: 28px;
-        line-height: 33px;
+        font-size: 2.8rem;
+        line-height: 3.3rem;
 
         color: #FFFFFF;
     }
@@ -44,8 +46,8 @@ background-size: cover;
 
         font-style: normal;
         font-weight: 700;
-        font-size: 14px;
-        line-height: 17px;
+        font-size: 1.4rem;
+        line-height: 1.7rem;
         text-align: center;
 
         background-color: #7978D9;
@@ -59,7 +61,6 @@ background-size: cover;
     display: flex;
     justify-content: space-between;
     align-items: center;
-
     
     height: 100vh;
     width: 100vw;
@@ -71,17 +72,19 @@ background-size: cover;
         flex-direction: column;
         align-items: center;
 
-        padding: 60px 40px;
+        padding: 6rem 4rem;
+        width: 48rem;
+        height: 48rem;
 
         background-color: #ffffff;
 
         h1 {
-            margin: 0 0 40px 0;
+            margin: 0 0 4.0rem 0;
 
             font-style: normal;
             font-weight: 500;
-            font-size: 28px;
-            line-height: 33px;
+            font-size: 2.8rem;
+            line-height: 3.3rem;
 
             color: #7978D9;
         }
@@ -89,49 +92,79 @@ background-size: cover;
         form {
             display: flex;
             flex-direction: column;
+            width: 100%;
 
             label {
-                margin: 0 0 8px 0;
+                margin: 0 0 0.8rem 0;
 
                 
                 font-style: normal;
                 font-weight: 400;
-                font-size: 18px;
-                line-height: 21px;
+                font-size: 1.8rem;
+                line-height: 2.1rem;
 
                 color: #484848;
             }
 
             input {
-                width: 400px;
-                height: 50px;
+                width: 100%;
+                height: 5rem;
 
                 padding: 0 10px;
-                margin: 0 0 25px 0;
+                margin: 0 0 2.5rem 0;
 
                 border: 1px solid #555555;
                 border-radius: 5px;
             }
+
+            button {
+                all: unset;
+    
+                width: 100%;
+                height: 4rem;
+    
+                margin: 4.0rem 0 0 0;
+    
+                font-style: normal;
+                font-weight: 700;
+                font-size: 1.4rem;
+                line-height: 1.7rem;
+                text-align: center;
+    
+                background-color: #7978D9;
+                color: #ffffff;
+                border-radius: 5px;
+                cursor: pointer;
+            }
         }
+    }
 
-        button {
-            all: unset;
+}
 
-            width: 400px;
-            height: 40px;
+@media screen and (max-width: 1200px) {
+    .registration {
+        display: none;
+    }
 
-            margin: 40px 0 0 0;
+    .container-row {
+        justify-content: center;
+    }
 
-            font-style: normal;
-            font-weight: 700;
-            font-size: 14px;
-            line-height: 17px;
-            text-align: center;
+}
 
-            background-color: #7978D9;
-            color: #ffffff;
-            border-radius: 5px;
-            cursor: pointer;
+@media screen and (max-width: 600px) {
+    .container-row {
+        width: 100vw;
+
+        padding: 0;
+        .form-login {
+            width: 100%;
+
+            input {
+                width: 100%;
+
+                padding: 0;
+            }
         }
     }
 }
