@@ -70,7 +70,7 @@ function Table() {
                         </div>
                     </div>
                 </div>
-            ))};
+            ))}
         </T.Container>
     );
 }

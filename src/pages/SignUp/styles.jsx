@@ -38,8 +38,8 @@ background-size: cover;
     h1 {
         font-style: normal;
         font-weight: 500;
-        font-size: 28px;
-        line-height: 33px;
+        font-size: 2.8rem;
+        line-height: 3.3rem;
 
         color: #7978D9;
     }
@@ -54,8 +54,8 @@ background-size: cover;
 
             font-style: normal;
             font-weight: 400;
-            font-size: 18px;
-            line-height: 21px;
+            font-size: 1.8rem;
+            line-height: 2.1rem;
 
             color: #484848;
         }
@@ -80,8 +80,8 @@ background-size: cover;
 
             font-style: normal;
             font-weight: 700;
-            font-size: 14px;
-            line-height: 17px;
+            font-size: 1.4rem;
+            line-height: 1.7rem;
             text-align: center;
 
             background-color: #7978D9;
@@ -95,10 +95,46 @@ background-size: cover;
     .link {
         font-style: normal;
         font-weight: 700;
-        font-size: 14px;
-        line-height: 17px;
+        font-size: 1.4rem;
+        line-height: 1.7rem;
 
         color: #7B61FF;
+    }
+}
+
+@media screen and (max-width: 1300px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .logo-img {
+        padding: 25px 0;
+
+        position: static;
+    }
+
+    .container-form {
+        .background-form {
+            padding: 40px 30px;
+        }
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .logo-img {
+        padding: 25px 0 10px 0;
+    }
+
+    .background-form {
+        width: 100%;
+
+        form {
+            width: 100%;
+
+            input {
+                width: 100%;
+            }
+        }
     }
 }
 `

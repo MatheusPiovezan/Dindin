@@ -1,8 +1,10 @@
 import styled, { css } from "styled-components";
 
 export const Container = styled.div`
+height: 60%;
 
 font-family: 'Lato', sans-serif;
+overflow: auto;
 
 .titles {
     display: flex;
@@ -36,8 +38,8 @@ font-family: 'Lato', sans-serif;
     strong {
         font-style: normal;
         font-weight: 700;
-        font-size: 14px;
-        line-height: 17px;
+        font-size: 1.4rem;
+        line-height: 1.7rem;
      }
 }
 
@@ -55,15 +57,15 @@ font-family: 'Lato', sans-serif;
     strong {
         font-style: normal;
         font-weight: 700;
-        font-size: 14px;
-        line-height: 17px;
+        font-size: 1.4rem;
+        line-height: 1.7rem;
     }
 
     span {
         font-style: normal;
         font-weight: 400;
-        font-size: 14px;
-        line-height: 17px;
+        font-size: 1.4rem;
+        line-height: 1.7rem;
     }
 
     .edit-delete {
@@ -90,12 +92,12 @@ font-family: 'Lato', sans-serif;
 }
 
 .date {
-        display: flex;
-        align-items: center;
+    display: flex;
+    align-items: center;
 
-        text-align: start;
-        cursor: pointer;
-    }
+    text-align: start;
+    cursor: pointer;
+}
 
 .small {
     text-align: center;
@@ -109,6 +111,16 @@ font-family: 'Lato', sans-serif;
     text-align: center;
     width: 25%;
 }
+
+@media screen and (max-width: 1200px) {
+    height: 200px;
+
+    overflow: auto;
+    .table, .titles {
+        min-width: 724px;
+    }
+}
+
 `
 
 export const Strong = styled.strong`

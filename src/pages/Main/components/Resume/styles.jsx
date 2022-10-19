@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-
+    
     .container {
 
-        max-width: 236px;
+        width: 236px;
     
         margin-top: 54px;
         padding: 26px 33px 31px 33px;
@@ -18,8 +18,8 @@ export const Container = styled.div`
         h1 {
             font-style: normal;
             font-weight: 700;
-            font-size: 18px;
-            line-height: 21px;
+            font-size: 1.8rem;
+            line-height: 2.1rem;
 
             color: #2F2F2F;
         }
@@ -34,8 +34,8 @@ export const Container = styled.div`
             span {
                 font-style: normal;
                 font-weight: 500;
-                font-size: 13px;
-                line-height: 15px;
+                font-size: 1.3rem;
+                line-height: 1.5rem;
 
                 color: #2F2F2F;
             }
@@ -64,16 +64,16 @@ export const Container = styled.div`
             span:first-child {
                 font-style: normal;
                 font-weight: 700;
-                font-size: 14px;
-                line-height: 17px;
+                font-size: 1.4rem;
+                line-height: 1.7rem;
 
                 color: #2F2F2F;
             }
 
             span:last-child {
                 font-weight: 500;
-                font-size: 14px;
-                line-height: 17px;
+                font-size: 1.4rem;
+                line-height: 1.7rem;
 
                 color: #3A9FF1;
             }
@@ -89,13 +89,32 @@ export const Container = styled.div`
         margin: 16px 0 0 0;
 
         font-weight: 700;
-        font-size: 14px;
-        line-height: 17px;
+        font-size: 1.4rem;
+        line-height: 1.7rem;
         text-align: center;
 
         color: #FFFFFF;
         background-color: #7978D9;
         border-radius: 5px;
         cursor: pointer;
+    }
+
+    @media screen and (max-width: 1200px) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        width: 100%;
+
+        .container {
+            width: 100%;
+            margin: 0;
+            
+            .spans-spaces {
+                justify-content: start;
+
+                gap: 50px;
+            }
+        }
     }
 `

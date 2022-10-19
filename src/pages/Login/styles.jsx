@@ -2,6 +2,8 @@ import styled from "styled-components";
 import Background from '../../assets/background.svg';
 
 export const Container = styled.div`
+height: 100vh;
+
 font-family: 'Rubik', sans-serif;
 background-image: url(${Background});
 background-size: cover;
@@ -139,6 +141,9 @@ background-size: cover;
         }
     }
 
+    .link-mobile {
+        display: none;
+    }
 }
 
 @media screen and (max-width: 1200px) {
@@ -148,15 +153,41 @@ background-size: cover;
 
     .container-row {
         justify-content: center;
+
+        .link-mobile {
+            display: block;
+
+            margin: 1.9rem 0 0 0;
+
+            font-style: normal;
+            font-weight: 700;
+            font-size: 1.4rem;
+            line-height: 1.7rem;
+            text-align: center;
+
+            color: #7B61FF;
+        }
     }
 
 }
 
 @media screen and (max-width: 600px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .logo-img {
+        padding: 50px 0 0 0;
+
+        position: static;
+    }
+
     .container-row {
         width: 100vw;
+        height: 70vh;
 
         padding: 0;
+
         .form-login {
             width: 100%;
 

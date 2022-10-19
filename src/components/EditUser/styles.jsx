@@ -33,8 +33,8 @@ export const Container = styled.div`
             h1 {
                 font-style: normal;
                 font-weight: 700;
-                font-size: 26px;
-                line-height: 43px;              
+                font-size: 2.6rem;
+                line-height: 4.3rem;              
             }
 
             img {
@@ -51,8 +51,8 @@ export const Container = styled.div`
 
                 font-style: normal;
                 font-weight: 500;
-                font-size: 20px;
-                line-height: 28px;
+                font-size: 2.0rem;
+                line-height: 2.8rem;
 
                 color: #484848;
             }
@@ -77,14 +77,28 @@ export const Container = styled.div`
             margin: 45px 0 0 0;
 
             font-weight: 700;
-            font-size: 14px;
-            line-height: 17px;
+            font-size: 1.4rem;
+            line-height: 1.7rem;
 
             text-align: center;
             background-color: #7978D9;
             color: #FFFFFF;
             border-radius: 5px;
             cursor: pointer;
+        }
+    }
+
+    @media screen and (max-width: 600px) {
+        .container {
+            width: 100vw;
+
+            padding: 56px 20px 45px 20px;
+
+            form {
+                input {
+                    width: 100%;
+                }
+            }
         }
     }
 `

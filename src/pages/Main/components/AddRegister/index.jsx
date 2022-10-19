@@ -32,7 +32,7 @@ function AddRegister() {
     return (
         <A.Container>
             <div className='container'>
-                <div>
+                <div className='container-form'>
                     <div className='title-close'>
                         <h1>Adicionar Registro</h1>
                         <img src={IconClose} onClick={() => setOpenModalAdd(false)} />

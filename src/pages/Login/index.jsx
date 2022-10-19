@@ -52,6 +52,7 @@ function Login() {
                         <input type='password' onChange={(e) => setSenha(e.target.value)} />
                         <button>Entrar</button>
                     </form>
+                    <Link className='link-mobile' to='/signup'>Não tem cadastro? Clique aqui!</Link>
                 </div>
             </div>
         </L.Container>

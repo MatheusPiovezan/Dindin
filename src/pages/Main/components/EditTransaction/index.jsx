@@ -30,7 +30,7 @@ function EditTransaction() {
     return (
         <A.Container>
             <div className='container'>
-                <div>
+                <div className='container-form'>
                     <div className='title-close'>
                         <h1>Editar Registro</h1>
                         <img src={IconClose} onClick={() => setOpenModalEditTransact(false)} />
