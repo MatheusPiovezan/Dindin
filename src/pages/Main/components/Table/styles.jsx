@@ -124,5 +124,5 @@ overflow: auto;
 `
 
 export const Strong = styled.strong`
-    ${props => props.valuecolor == 'entrada' ? css`color: #6460FB;` : css`color: #FA8C10;`}
+    ${props => props.valuecolor == 'entry' ? css`color: #6460FB;` : css`color: #FA8C10;`}
 `
