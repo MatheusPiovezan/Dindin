@@ -26,7 +26,7 @@ function EditTransaction() {
   const btnExitRef = useRef();
 
   useEffect(() => {
-    if (btnClicked !== "saida") {
+    if (btnClicked !== "exit") {
       btnEntryRef.current.style = "background: #3A9FF1;";
       btnExitRef.current.style = "background: #B9B9B9;";
     } else {
@@ -41,7 +41,7 @@ function EditTransaction() {
     })();
     getTransactionId();
   }, []);
-  console.log(categorys);
+
   return (
     <A.Container>
       <div className="container">
@@ -54,10 +54,10 @@ function EditTransaction() {
             />
           </div>
           <div className="btn-entry-exit">
-            <button ref={btnEntryRef} onClick={() => setBtnClicked("entrada")}>
+            <button ref={btnEntryRef} onClick={() => setBtnClicked("entry")}>
               Entrada
             </button>
-            <button ref={btnExitRef} onClick={() => setBtnClicked("saida")}>
+            <button ref={btnExitRef} onClick={() => setBtnClicked("exit")}>
               Saída
             </button>
           </div>
@@ -83,7 +83,7 @@ function EditTransaction() {
             <label>Data</label>
             <input
               value={editTransactionDate}
-              type="text"
+              type="date"
               onChange={(e) => setEditTransactionDate(e.target.value)}
             />
             <label>Descrição</label>

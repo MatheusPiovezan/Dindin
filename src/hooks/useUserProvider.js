@@ -5,7 +5,7 @@ function useUserProvider() {
 
     const [categorys, setCategorys] = useState([]);
 
-    const [btnClicked, setBtnClicked] = useState('saida');
+    const [btnClicked, setBtnClicked] = useState('exit');
 
     const [openModalAdd, setOpenModalAdd] = useState(false);
     const [addRegisterValue, setAddRegisterValue] = useState('');

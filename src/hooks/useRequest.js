@@ -58,7 +58,7 @@ function useRequest() {
       setOpenModalAdd(false);
       listTransactions();
     } catch (error) {
-      toast.error(error.response.data.mensagem);
+      toast.error(error.response.data);
     }
   }
 
@@ -120,7 +120,7 @@ function useRequest() {
 
       toast.success(success.transactionDeletSuccess);
     } catch (error) {
-      toast.error(error.response.data.mensagem);
+      toast.error(error.response.data);
     }
   }
 
@@ -166,7 +166,7 @@ function useRequest() {
       getUser();
       setOpenModalUser(false);
     } catch (error) {
-      console.log(error.message);
+      toast.error(error.response.data);
     }
   }
 
@@ -177,11 +177,11 @@ function useRequest() {
       await api.put(
         `/transaction/${getItem("idTransact")}`,
         {
-          tipo: btnClicked,
-          descricao: editTransactionDescription,
-          valor: Number(editTransactionValue),
-          data: editTransactionDate,
-          categoria_id: Number(editTransactionCategory),
+          type: btnClicked,
+          description: editTransactionDescription,
+          value: Number(editTransactionValue),
+          date: new Date(editTransactionDate + " 00:00:00"),
+          category_id: Number(editTransactionCategory),
         },
         {
           headers: {
@@ -193,7 +193,7 @@ function useRequest() {
       setOpenModalEditTransact(false);
       listTransactions();
     } catch (error) {
-      toast.error(error.response.data.mensagem);
+      toast.error(error.response.data);
     }
   }
 
