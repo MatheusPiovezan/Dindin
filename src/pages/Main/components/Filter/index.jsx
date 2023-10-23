@@ -30,7 +30,7 @@ function Filter() {
 
     localCategorys.forEach((category) => {
       if (category.checked) {
-        arrayFilter.push(`filtro[]=${category.descricao}`);
+        arrayFilter.push(`filter=${category.description}`);
       }
     });
 

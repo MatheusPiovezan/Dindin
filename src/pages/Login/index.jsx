@@ -26,10 +26,10 @@ function Login() {
 
       setItem("token", response.data.token.token);
       setItem("userId", response.data.id);
-      toast.success(success.usersLoggedInSuccessfully);
+      toast.success(success.usersLoggedInSuccessfully);      
       navigate("home");
     } catch (err) {
-      toast.error(err.response.data.mensagem);
+      toast.error(err.response.data);
     }
   }
   return (

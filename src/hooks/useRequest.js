@@ -218,8 +218,9 @@ function useRequest() {
   async function listTransactionsFilter(filters) {
     const joinFilters = filters.join("&");
 
+    console.log(joinFilters);
     try {
-      const response = await api.get(`/transacao?${joinFilters}`, {
+      const response = await api.get(`/transaction?${joinFilters}`, {
         headers: {
           Authorization: `Bearer ${getItem("token")}`,
         },
