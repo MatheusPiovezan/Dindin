@@ -35,7 +35,7 @@ function Login() {
   return (
     <L.Container>
       <div className="logo-img">
-        <img src={Logo} />
+        <img src={Logo} alt=""/>
       </div>
       <div className="container-row">
         <div className="registration">
